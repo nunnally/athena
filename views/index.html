@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/buefy.min.css">
+    <link rel="stylesheet" href="https://cdn.materialdesignicons.com/2.5.94/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css">
+
+    <style>
+
+        .hero.is-primary.is-bold {
+
+            background-image: linear-gradient(141deg,#000000,#7957d5 71%,#9b67df);
+            
+
+            
+        }
+        .bdbutton{
+            background-color: #ffdd57 !important;
+            border-color: #ffdd57 !important;
+            color: rgba(0,0,0,.7) !important;
+        }
+        .hero.is-primary.is-bold::after {
+            content: "";
+            background: url(/img/news.jpg);
+            opacity: 0.5;
+
+            position: absolute;
+            z-index: 10;   
+}
+
+
+    </style>
+
+
+
+    <title>Athena - Busca e Ranqueamento de Notícias</title>
+</head>
+
+<body>
+    <nav class="navbar is-black">
+            <div class="navbar-brand">
+                <a class="navbar-item" href="/">
+                
+                   ATHENA
+                
+                </a>
+                <div class="navbar-burger burger" data-target="navMenuColorblack-example">
+                <span></span>
+                <span></span>
+                <span></span>
+                </div>
+            </div>
+            
+            <div id="navMenuColorblack-example" class="navbar-menu">
+                <div class="navbar-start">
+                <a class="navbar-item is-primary" href="/">
+                    inicio
+                </a>
+                <div class="navbar-item has-dropdown is-hoverable">
+                    <a class="navbar-link" href="/">
+                    busca
+                    </a>
+                    <div class="navbar-dropdown">
+                    <a class="navbar-item" href="/">
+                        realizar busca
+                    </a>
+
+
+
+
+                    <hr class="navbar-divider">
+                    <a class="navbar-item" href="/palavras-chave">
+                        palavras-chave
+                    </a>
+                    <a class="navbar-item is-active" href="/configuracoes">
+                        configurações
+                    </a>
+                    </div>
+                </div>
+                </div>
+            
+                <div class="navbar-end">
+                <div class="navbar-item">
+                    <div class="field is-grouped">
+
+                    <p class="control">
+                        <a class="button is-" href="#">
+
+                        <span>repositório do projeto</span>
+                        </a>
+                    </p>
+                    </div>
+                </div>
+                </div>
+            </div>
+            </nav>
+
+    <section class="hero is-primary is-bold">
+        <div class="hero-body">
+            <div class="container hero-body">
+            <p class="title">
+                Athena
+            </p>
+            <p class="subtitle">
+                Plataforma de busca e ranqueamento de notícias.
+            </p>
+            </div>
+        </div>
+    </section>
+
+    
+    <div id="app">
+
+        <b-loading :is-full-page="isFullPage" :active.sync="isLoading" :can-cancel="false"></b-loading>
+
+        <section class="section">
+
+            <div class="container">
+                <h1 class="title">busca & ranqueamento</h1>
+                <p>A plataforma <b>Athena</b> irá buscar pelas palavras-chave selecionadas em diversas fontes selecionadas. Após ter a busca efetuada, a plataforma irá realizar o ranqueamento das notícias, afim de de tentar estimar a relevância desta notícia. <br>Tendo as notícias selecionadas, é possível enviá-las para o banco de dados, assim será possível utilizar outros artefatos, como por exemplo o <i>clipping.</i>
+                </p> 
+<br>    
+<b-message title="Info" type="is-info" aria-close-label="Fechar mensagem">
+        O sistema de ranqueamento apenas tenta obter os score através de uma caixa de palavras. O seu processo leva em conta a quantidade de vezes que uma palavra e seus sinônimos aparecem. Não há um processamento de linguagem natural ou algo do gênero.
+</b-message>
+<b-button class="bdbutton" @click="storeDatabase" type="is-warning" outlined>enviar notícias selecionados ao banco de dados</b-button> <br>    <br>
+
+                <section>
+                    <p class="content"><b>palavras chaves:</b></p>
+
+                    <div class="block">
+
+                        <b-checkbox  v-for="(role,index) in allWords" v-model="wordsGroup"
+                            :native-value="role"
+                            :key="index">
+                            {{role}}
+                        </b-checkbox>
+                        
+                        <p class="content">
+                                <b>palavras-chave selecionadas:</b>
+                                {{ wordsGroup }}
+                            </p>
+                      </div>
+
+
+                      <p class="content"><b>fontes:</b></p>
+
+                      <div class="block">
+  
+                          <b-checkbox  v-for="(source,index) in allSources" v-model="checkboxGroup"
+                              :native-value="source"
+                              :key="index">
+                              {{source}}
+                          </b-checkbox>
+                          
+                          <p class="content">
+                                  <b>palavras-chave selecionadas:</b>
+                                  {{ checkboxGroup }}
+                              </p>
+                        </div>
+                       
+                </section>
+
+            
+                <br>
+                <b-button @click="loadAsyncData" type="is-success" outlined>realizar busca</b-button>
+                <b-button @click="loadAsyncData" outlined>realizar busca sem ranqueamento</b-button>
+
+            </div>
+    
+        </section>
+
+
+
+        <div v-if="ok">
+            <section class="section">
+
+                <div class="container">
+                    <h1 class="title">Resultados</h1>
+                    <h2 class="subtitle">
+    
+                    </h2>
+
+
+                   
+                </div>
+    
+            </section>
+
+            <!--Well, if we want we can pass an array (collumns) as argument !-->
+            <div v-for="item of searched" class="container">
+                
+                <h2 class="title is-4 is-spaced bd-anchor-title">Exibindo os resultados para {{item}}({{data[item].length}})</h2>
+                
+                    <section>
+                        <b-table
+                            :data="data[item]"
+                            :loading="loading"
+                            :checked-rows.sync="checkedRows"
+                            paginated
+                            :total="total"
+                            :per-page="perPage"
+                            @page-change="onPageChange"
+                            aria-next-label="Próxima Página"
+                            aria-previous-label="Página Anterior"
+                            aria-page-label="Página"
+                            aria-current-label="Página Atual"
+                            :checked-rows.sync="checkedRows"
+                            checkable
+                
+>
+                
+                            <template slot-scope="props">
+    
+                                    <b-table-column field="image" label="Imagem">
+                                            <img :src="props.row.urlToImage" alt="">
+                                    </b-table-column>
+                                    <b-table-column field="original_title" label="Title" >
+                                        {{ props.row.title }}
+                                    </b-table-column>
+                                    
+                                    
+                                    <b-table-column field="release_date" label="Data de Publicação"  centered>
+                                        {{ props.row.publishedAt }}
+                                    </b-table-column>
+                                    
+                                    <b-table-column label="Resumo" width="500">
+                                        {{ props.row.content}} <br>
+                                        <a :href="props.row.url" target="_blank">Notícia na íntegra </a>
+                                    </b-table-column>
+                                    <b-table-column field="vote_average" label="Score" numeric >
+                                            <span class="tag" :class="type(8)">
+                                               8
+                                            </span>
+                                        </b-table-column>
+                                </template>
+                        </b-table>
+                    </section>
+                    <b-button @click="storeDatabase" type="is-warning" outlined>enviar notícias selecionados ao banco de dados</b-button> <br>    <br>
+
+            </div>
+            
+        </div>
+
+
+    </div>
+
+    <footer class="footer">
+        <div class="content has-text-centered">
+          <p>
+            <strong>Athena - Plataforma de busca e ranqueamento de notícias</strong><br>Plataforma desenvolvida pelos alunos César Augusto e Jonas da Universidade de Brasília</a>.<br> The source code is licensed under
+            <a href="http://opensource.org/licenses/mit-license.php">MIT</a>. 
+          </p>
+        </div>
+      </footer>
+
+    <script src="js/vue.js"></script>
+    <!-- Full bundle | É possível colocar os componenetes individuais-->
+    <script src="js/buefy.min.js"></script>
+    <script src='https://unpkg.com/axios/dist/axios.min.js'></script>
+    <script src="js/app.js"></script>
+
+
+</body>
+</html>
+
+

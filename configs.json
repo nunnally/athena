@@ -1,0 +1,30 @@
+{
+
+    "words":{
+    
+        "dengue":
+        {
+            "sinonimos":["zika"],
+            "scores":[0,0,0,1,1,3,3]
+        },
+
+
+        "aids":
+
+        {
+            "sinonimos":["dst","doença sexualmente transmissível"],
+            "scores":[3,4,3,1,0,2,4]
+        },
+
+        "diarreia":
+
+        {
+            "sinonimos":[],
+            "scores":[0,1,1,2,3,4,5]
+        }
+
+    },
+
+    "sources": ["globo.com","gazetaweb.globo.com","uol.com.br","terra.com.br","r7.com","correiobraziliense.com.br","estadao.com.br"]
+
+}

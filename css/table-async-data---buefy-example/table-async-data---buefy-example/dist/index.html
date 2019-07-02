@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en" class="section">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Table async data - Buefy example</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  
+  <link rel='stylesheet' href='https://unpkg.com/buefy/dist/buefy.min.css'>
+<link rel='stylesheet' href='https://cdn.materialdesignicons.com/2.0.46/css/materialdesignicons.min.css'>
+<link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.0.6/css/all.css'>
+
+  
+  
+</head>
+
+<body>
+
+  <div id="app" class="container">
+    
+    <section>
+        <b-table
+            :data="data"
+            :loading="loading"
+
+            paginated
+            backend-pagination
+            :total="total"
+            :per-page="perPage"
+            @page-change="onPageChange"
+            aria-next-label="Next page"
+            aria-previous-label="Previous page"
+            aria-page-label="Page"
+            aria-current-label="Current page"
+
+            backend-sorting
+            :default-sort-direction="defaultSortOrder"
+            :default-sort="[sortField, sortOrder]"
+            @sort="onSort">
+
+            <template slot-scope="props">
+<b-table-column field="original_title" label="Title" sortable>
+    {{ props.row.original_title }}
+</b-table-column>
+
+<b-table-column field="vote_average" label="Vote Average" numeric sortable>
+    <span class="tag" :class="type(props.row.vote_average)">
+        {{ props.row.vote_average }}
+    </span>
+</b-table-column>
+
+<b-table-column field="vote_count" label="Vote Count" numeric sortable>
+     {{ props.row.vote_count }}
+</b-table-column>
+
+<b-table-column field="release_date" label="Release Date" sortable centered>
+    {{ props.row.release_date ? new Date(props.row.release_date).toLocaleDateString() : '' }}
+</b-table-column>
+
+<b-table-column label="Overview" width="500">
+    {{ props.row.overview | truncate(80) }}
+</b-table-column>
+            </template>
+        </b-table>
+    </section>
+
+</div>
+  <script src='https://unpkg.com/vue/dist/vue.min.js'></script>
+<script src='https://unpkg.com/buefy/dist/buefy.min.js'></script>
+<script src='https://unpkg.com/axios/dist/axios.min.js'></script>
+<script src='https://cdn.jsdelivr.net/npm/lodash@4.17.4/lodash.min.js'></script>
+<script src='https://unpkg.com/cleave.js/dist/cleave.min.js'></script>
+<script src='https://cdn.jsdelivr.net/npm/sortablejs@1.6.1/Sortable.min.js'></script>
+<script src='https://cdn.jsdelivr.net/npm/vee-validate@2.1.0-beta.9/dist/vee-validate.min.js'></script>
+
+  
+
+    <script  src="./script.js"></script>
+
+
+
+
+</body>
+
+</html>
