@@ -41,10 +41,43 @@ module.exports = app => {
 
   })
 
+
+  /*
+    Receive a dict with a word and his scores.
+
+  */
   app.post('/settings',function (req,res){
 
-    //let data = JSON.stringify(words);  
-    //fs.writeFileSync('teste1.json', data);
+    const word=  {
+      
+      teste:{
+      
+        sinonimos:["teste","teste2"],
+        scores:[0,0,0,1,1,3,3]
+      }
+
+    }
+
+    const words = {
+   
+      dengue:{
+        
+        sinonimos:["zika"],
+        scores:[0,0,0,1,1,3,3]
+      },
+  
+      aids:{
+        sinonimos:['dst', 'doença sexualmente transmissível'],
+        scores:[3,4,3,1,0,2,4]
+      }
+  
+    }
+
+    palavra = Object.keys(word)
+
+    words[palavra[0]] = word[palavra[0]]
+
+    console.log(words)
 
   })
 }  
