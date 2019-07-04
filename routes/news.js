@@ -114,14 +114,15 @@ module.exports = app => {
             }).then(response => {
                 
                 //responses.push(response)
-                console.log('adicionei')
+                //console.log('adicionei')
                
             })
+            /*
             .catch((error) => {
-                //errors.push(error)
-                console.log('error')
-                //console.log(error.data)
+                errors.push(error)
+                //console.log('error')
             })
+            */
             promises.push(promise);
             //data.push(current);
 
@@ -129,13 +130,13 @@ module.exports = app => {
 
         Promise.all(promises)
         .then(()=>{
-            res.send(responses);
-            console.log('foi bebe')
+            res.json(1);
+            //console.log('foi')
         })
         .catch((error) => {
-            console.log('foi n bebe')
-            console.log(error)
-            res.send(errors);
+            //console.log('foi n')
+            //console.log(error)
+            res.json(error);
         })
         //res.json(news)
 

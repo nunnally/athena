@@ -24,6 +24,9 @@ const example = {
     },
     methods: {
 
+        snackbar() {
+            this.$snackbar.open(`As noticias foram enviadas para o banco de dados!`)
+        },
 
         getNews () {
 
@@ -130,6 +133,7 @@ const example = {
             .then(({data}) =>{
                 
                 console.log(data)
+                snackbar()
 
             })
             .catch((error) => {
