@@ -1,7 +1,7 @@
 FROM node:10
-WORKDIR /app
-COPY package.json /app
+WORKDIR /docker/athena
+COPY package.json /docker/athena
 RUN npm install
-COPY  /app
+COPY . /docker/athena
 CMD node index.js
 EXPOSE 8081
