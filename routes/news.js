@@ -48,9 +48,17 @@ module.exports = app => {
             })
                 .then(response => {
 
+                    /*
+                    Só pra testes, melhorando a função ranktext, depois, utilize:
+                    data[word]['score']= score(response)
+
+                    */
+                    var precision = 100; // 2 decimals
+                    var score = Math.floor(Math.random() * (10 * precision - 1 * precision) + 1 * precision) / (1*precision);
 
         
                     data[word] = response;
+                    data[word]['score'] = score;
                 })
             promises.push(promise);
         });
@@ -97,7 +105,7 @@ module.exports = app => {
                       ],
                     "publishedAt":element.publishedAt,
                     "insertionDate":currentDate,
-                    "score":6.0,
+                    "score":6.6711,
                     "source":element['source'].name,
                     "title":element.title,
                     "country":"BR",
@@ -114,7 +122,7 @@ module.exports = app => {
             }).then(response => {
                 
                 //responses.push(response)
-                //console.log('adicionei')
+                console.log('adicionei')
                
             })
             /*

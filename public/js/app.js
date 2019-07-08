@@ -28,6 +28,17 @@ const example = {
             this.$snackbar.open(`As noticias foram enviadas para o banco de dados!`)
         },
 
+        prompt() {
+            this.$dialog.prompt({
+                message: `Digite a palavra-chave à ser incluída`,
+                inputAttrs: {
+                    placeholder: 'e.g. rubéola',
+                    maxlength: 10
+                },
+                onConfirm: (value) =>this.allWords.push(value)
+            })
+        },
+
         getNews () {
 
             console.log(wordsGroup.join(', '))
@@ -75,8 +86,6 @@ const example = {
             
          */
 
-        
-
         loadAsyncData() {
 
             console.log(this.wordsGroup.join(', '));
@@ -103,10 +112,12 @@ const example = {
                         
                     data[word].articles.forEach((item => {
                         this.data[word].push(item)
+                        console.log("Aqui")
+                        console.log(item)
                     }))
 
                 }))
-
+                console.log(this.data)
                 this.ok=true;
                 this.isLoading = false
 
@@ -122,6 +133,7 @@ const example = {
 
 
         },
+
 
         storeDatabase() {
 
@@ -143,51 +155,7 @@ const example = {
             
         },
 
-        loadAsyncData() {
 
-            console.log(this.wordsGroup.join(', '));
-            
-            this.loading = true
-            
-            this.isLoading = true
-
-            axios.post('http://localhost:8081/getNews',{
-
-                "word":"dengue",
-                "words":this.wordsGroup,
-                "domains":this.checkboxGroup
-
-            })
-            .then(({data}) =>{
-                this.data = []
-                this.loading = false
-                this.searched=data.words;
-
-                data.words.forEach((word =>{
-
-                    this.data[word] = []
-                        
-                    data[word].articles.forEach((item => {
-                        this.data[word].push(item)
-                    }))
-
-                }))
-                console.log(this.data)
-                this.ok=true;
-                this.isLoading = false
-
-            })
-            .catch((error) => {
-                    this.data = []
-                    this.total = 0
-                    this.loading = false
-                    throw error
-                })
-            
-
-
-
-        },
         onPageChange(page) {
             this.page = page
             this.loadAsyncData()

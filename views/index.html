@@ -71,8 +71,8 @@
 
 
                     <hr class="navbar-divider">
-                    <a class="navbar-item" href="/palavras-chave">
-                        palavras-chave
+                    <a class="navbar-item" href="#">
+                        tutorial
                     </a>
                     <a class="navbar-item is-active" href="/configuracoes">
                         configurações
@@ -125,11 +125,21 @@
 <b-message title="aviso importante" type="is-info" aria-close-label="Fechar mensagem">
         O sistema de ranqueamento apenas tenta obter os score através de uma caixa de palavras. O seu processo leva em conta a quantidade de vezes que uma palavra e seus sinônimos aparecem. Não há um processamento de linguagem natural ou algo do gênero, é <b><i>altamente recomendável</i></b> a leitura da notícia para um bom resultado de <i>clipping</i> e uma boa base de dados.
 </b-message>
-<b-button class="bdbutton" @click="storeDatabase" type="is-warning" outlined>enviar notícias selecionados ao banco de dados</b-button> <br>    <br>
 
                 <section>
                     <p class="content"><b>palavras chaves:</b></p>
-
+                    <b-icon
+                    pack="fas"
+                    icon="info-circle"
+                    size="is-small">
+                </b-icon> Você também pode adicionar uma palavra chave temporária.
+                <a @click="prompt"><b-icon
+                
+                pack="fas"
+                icon="plus-square"
+                size="is-small">
+            </b-icon></a>
+                
                     <div class="block">
 
                         <b-checkbox  v-for="(role,index) in allWords" v-model="wordsGroup"
@@ -141,7 +151,7 @@
                         <p class="content">
                                 <b>palavras-chave selecionadas:</b>
                                 {{ wordsGroup }}
-                            </p>
+                         </p>
                       </div>
 
 
@@ -165,8 +175,12 @@
 
             
                 <br>
-                <b-button @click="loadAsyncData" type="is-success" outlined>realizar busca</b-button>
+                <b-button @click="loadAsyncData" type="is-success" outlined>realizar busca (fixing?)</b-button>
                 <b-button @click="loadAsyncData" outlined>realizar busca sem ranqueamento</b-button>
+                <br>
+                <br>
+                <b-button  v-if="checkedRows.length>0" class="bdbutton" @click="storeDatabase" type="is-warning" outlined>enviar notícias selecionados ao banco de dados</b-button> <br>    <br>
+
 
             </div>
     
@@ -238,8 +252,6 @@
                                 </template>
                         </b-table>
                     </section>
-                    <b-button @click="storeDatabase" type="is-warning" outlined>enviar notícias selecionados ao banco de dados</b-button> <br>    <br>
-
             </div>
             
         </div>
