@@ -1,7 +1,7 @@
-ROM node:10
+FROM node:10
 WORKDIR /app
 COPY package.json /app
 RUN npm install
-COPY /app
+COPY  /app
 CMD node index.js
 EXPOSE 8081
