@@ -11,6 +11,13 @@ Eu não poderia escolher outro nome pra esta plataforma que não este.
 
 Após clonar o repositório, vá até a pasta athena e digite:
 ```
+ docker build -t athena .
+```
+
+Em seguida:
+
+```
+ docker run -p 8081:8081 athena
 
 ```
 
