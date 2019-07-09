@@ -7,3 +7,6 @@ install:
 cache:
   directories:
     - "node_modules"
+before_script:
+  - sleep 10
+  - "node index.js"
