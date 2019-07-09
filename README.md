@@ -1,4 +1,4 @@
-# athena
+# Athena
 
 ## Por que Athena?
 Uma vez uma pessoa muito especial disse que sua personagem favorita de um desenho se chamava Athena. Em uma de nossas boas conversas, 
@@ -11,17 +11,31 @@ Um fato curioso sobre a Sarah: Ela tinha um domínio absurdo da gramática, mas 
 
 ## Como instalar?
 
-Após clonar o repositório, vá até a pasta athena e digite:
+Primeiramente, clone este repositório com o seguinte comando:
+
+```
+https://github.com/nunnally/athena.git
+```
+
+Em seguida, navegue até a pasta athena:
+
+```
+cd athena
+```
+
+Feito isto, crie a imagem do docker
 ```
  docker build -t athena .
 ```
 
-Em seguida:
+Em seguida, execute a aplicação:
 
 ```
  docker run -p 8081:8081 athena
 
 ```
+
+
 
 ## Autores
 
