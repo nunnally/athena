@@ -11,7 +11,7 @@ ela me disse que um dia faria um programa chamado Alan, e outra chamado Athena.
 
 Infelizmente essa pessoa não está mais aqui. Sabendo que ela sempre teve uma enorme vontade de ajudar todas as pessoas a sua volta, eu deixo aqui uma pequena homenagem, nomeando este programa de Athena.
 
-Um fato curioso sobre a Sarah: Ela tinha um domínio absurdo da gramática, mas em seus texos pessoais nunca utilizava letras maiúsculas. Parte dessa mania é encontrada dentro da plataforma, onde propositalmente não é utilizado letras minúsculas.
+Um fato curioso sobre a Sarah: Ela tinha um domínio absurdo da gramática, mas em seus texos pessoais nunca utilizava letras maiúsculas. Parte dessa mania é encontrada dentro da plataforma, onde propositalmente não é utilizado letras maiúsculas.
 
 
 ## Como instalar?
