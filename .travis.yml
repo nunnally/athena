@@ -1,9 +1,11 @@
 language: node_js
 node_js:
   - "10"
-
-install:
-  - npm install
+services:
+  - docker
+before_install:
+  - docker build -t athena .
+  - docker run -p 8081:8081 athena
 cache:
   directories:
     - "node_modules"
