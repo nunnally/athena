@@ -8,5 +8,5 @@ cache:
   directories:
     - "node_modules"
 before_script:
-  - sleep 10
+  - sleep 5
   - "node index.js"
