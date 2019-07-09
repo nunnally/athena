@@ -40,6 +40,7 @@ Em seguida, execute a aplicação:
 ## Autores
 
 * [César Augusto Vilela Borges](https://github.com/nunnally)
+* Jonas
 
 
 
