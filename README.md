@@ -6,7 +6,7 @@ Este programa foi desenvolvido na disciplina Sistemas de Informação, do Depart
 
 
 ## Por que Athena?
-Uma vez uma pessoa muito especial disse que sua personagem favorita de um desenho se chamava Athena. Em uma de nossas boas conversas, 
+Uma vez uma pessoa muito especial disse que sua personagem favorita de um desenho era Athena, deusa da mitologia nórdica. Em uma de nossas boas conversas, 
 ela me disse que um dia faria um programa chamado Alan, e outra chamado Athena.
 
 Infelizmente essa pessoa não está mais aqui. Sabendo que ela sempre teve uma enorme vontade de ajudar todas as pessoas a sua volta, eu deixo aqui uma pequena homenagem, nomeando este programa de Athena.
