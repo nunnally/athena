@@ -1,7 +1,6 @@
 # Athena
 
 [![license](https://img.shields.io/github/license/onwwward/laravel-bugherd.svg?maxAge=2592000)]()
-[![Packagist](https://img.shields.io/packagist/v/onwwward/laravel-bugherd.svg?max
 
 
 Sistema de busca e ranqueamento de notícias Sala de Situação em Saúde - FS.
