@@ -5,7 +5,12 @@ services:
   - docker
 before_install:
   - docker build -t athena .
-  - docker run -p 8081:8081 athena
+
+deploy:
+  provider: script
+  script: docker push athena:latest
+  on:
+    branch: master
 cache:
   directories:
     - "node_modules"
