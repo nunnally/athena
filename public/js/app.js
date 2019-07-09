@@ -33,7 +33,7 @@ const example = {
                 message: `Digite a palavra-chave à ser incluída`,
                 inputAttrs: {
                     placeholder: 'e.g. rubéola',
-                    maxlength: 10
+                    maxlength: 40
                 },
                 onConfirm: (value) =>this.allWords.push(value)
             })
