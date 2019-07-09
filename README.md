@@ -1,5 +1,10 @@
 # Athena
 
+Sistema de busca e ranqueamento de notícias Sala de Situação em Saúde - FS.
+
+Este programa foi desenvolvido na disciplina Sistemas de Informação, do Departamento de Ciência da Computação da Universidade de Brasília, executada sob responsabilidade do Professor Dr. Jorge Henrique Cabral Fernandes.
+
+
 ## Por que Athena?
 Uma vez uma pessoa muito especial disse que sua personagem favorita de um desenho se chamava Athena. Em uma de nossas boas conversas, 
 ela me disse que um dia faria um programa chamado Alan, e outra chamado Athena.
