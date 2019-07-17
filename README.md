@@ -17,7 +17,7 @@ Este programa foi desenvolvido na disciplina Sistemas de Informação, do Depart
 Primeiramente, clone este repositório com o seguinte comando:
 
 ```
-https://github.com/nunnally/athena.git
+git clone https://github.com/nunnally/athena.git
 ```
 
 Em seguida, navegue até a pasta athena:
