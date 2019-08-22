@@ -5,8 +5,6 @@
 
 Sistema de busca e ranqueamento de notícias Sala de Situação em Saúde - FS.
 
-Este programa foi desenvolvido na disciplina Sistemas de Informação, do Departamento de Ciência da Computação da Universidade de Brasília, executada sob responsabilidade do Professor Dr. Jorge Henrique Cabral Fernandes.
-
 
 ## Por que Athena?
 
